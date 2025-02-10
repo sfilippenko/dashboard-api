@@ -1,10 +1,11 @@
 {
   "name": "dashboard-api",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js"
+    "start": "node dist",
+    "prestart": "tsc"
   },
   "keywords": [],
   "author": "",
