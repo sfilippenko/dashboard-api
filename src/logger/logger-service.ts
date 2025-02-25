@@ -1,6 +1,8 @@
 import {Logger} from "tslog";
 import {LoggerServiceInterface} from "./types.js";
+import {injectable} from "inversify";
 
+@injectable()
 export class LoggerService implements LoggerServiceInterface {
   private logger
 

@@ -2,10 +2,14 @@ import {BaseController} from "../common/base-controller.js";
 import {LoggerServiceInterface} from "../logger/types.js";
 import {Request, Response, NextFunction} from "express";
 import {HttpError} from "../errors/http-error.js";
+import {inject, injectable} from "inversify";
+import {TYPES} from "../types.js";
+import {UsersControllerInterface} from "./types.js";
 
-export class UsersController extends BaseController {
-  constructor(logger: LoggerServiceInterface) {
-    super(logger);
+@injectable()
+export class UsersController extends BaseController implements UsersControllerInterface {
+  constructor(@inject(TYPES.LoggerService) private loggerService: LoggerServiceInterface) {
+    super(loggerService);
     this.bindRoutes([
       {
         method: 'post',
