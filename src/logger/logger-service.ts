@@ -1,5 +1,5 @@
 import { Logger } from 'tslog';
-import { LoggerServiceInterface } from './types.js';
+import { LoggerServiceInterface } from './types';
 import { injectable } from 'inversify';
 
 @injectable()

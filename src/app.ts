@@ -1,10 +1,10 @@
 import express, { Express } from 'express';
-import { LoggerService } from './logger/logger-service.js';
+import { LoggerService } from './logger/logger-service';
 import { Server } from 'http';
-import { ExceptionFilterInterface } from './errors/types.js';
+import { ExceptionFilterInterface } from './errors/types';
 import { inject, injectable } from 'inversify';
-import { TYPES } from './types.js';
-import { UsersControllerInterface } from './users/types.js';
+import { TYPES } from './types';
+import { UsersControllerInterface } from './users/types';
 
 @injectable()
 export class App {

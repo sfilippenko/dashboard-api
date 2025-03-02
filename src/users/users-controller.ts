@@ -1,10 +1,10 @@
-import { BaseController } from '../common/base-controller.js';
-import { LoggerServiceInterface } from '../logger/types.js';
+import { BaseController } from '../common/base-controller';
+import { LoggerServiceInterface } from '../logger/types';
 import { Request, Response, NextFunction } from 'express';
-import { HttpError } from '../errors/http-error.js';
+import { HttpError } from '../errors/http-error';
 import { inject, injectable } from 'inversify';
-import { TYPES } from '../types.js';
-import { UsersControllerInterface } from './types.js';
+import { TYPES } from '../types';
+import { UsersControllerInterface } from './types';
 
 @injectable()
 export class UsersController extends BaseController implements UsersControllerInterface {

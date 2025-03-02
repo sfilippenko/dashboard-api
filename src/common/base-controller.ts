@@ -1,8 +1,8 @@
 import { Router, Response } from 'express';
-import { LoggerServiceInterface } from '../logger/types.js';
-import { RouteController } from './types.js';
+import { LoggerServiceInterface } from '../logger/types';
+import { RouteController } from './types';
 import { inject, injectable } from 'inversify';
-import { TYPES } from '../types.js';
+import { TYPES } from '../types';
 
 @injectable()
 export abstract class BaseController {
