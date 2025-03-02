@@ -1,10 +1,10 @@
-import express, {Express} from "express";
-import {LoggerService} from "./logger/logger-service.js";
-import {Server} from 'http';
-import {ExceptionFilterInterface} from "./errors/types.js";
-import {inject, injectable} from "inversify";
-import {TYPES} from "./types.js";
-import {UsersControllerInterface} from "./users/types.js";
+import express, { Express } from 'express';
+import { LoggerService } from './logger/logger-service.js';
+import { Server } from 'http';
+import { ExceptionFilterInterface } from './errors/types.js';
+import { inject, injectable } from 'inversify';
+import { TYPES } from './types.js';
+import { UsersControllerInterface } from './users/types.js';
 
 @injectable()
 export class App {
@@ -15,13 +15,13 @@ export class App {
   constructor(
     @inject(TYPES.LoggerService) private logger: LoggerService,
     @inject(TYPES.UsersController) private usersController: UsersControllerInterface,
-    @inject(TYPES.ExceptionFilter) private exceptionFilter: ExceptionFilterInterface
+    @inject(TYPES.ExceptionFilter) private exceptionFilter: ExceptionFilterInterface,
   ) {
     this.app = express();
     this.port = 8000;
-    this.logger = logger
-    this.usersController = usersController
-    this.exceptionFilter = exceptionFilter
+    this.logger = logger;
+    this.usersController = usersController;
+    this.exceptionFilter = exceptionFilter;
   }
 
   useRoutes() {
@@ -29,7 +29,7 @@ export class App {
   }
 
   useExceptionFilters() {
-    this.app.use(this.exceptionFilter.catch.bind(this.exceptionFilter))
+    this.app.use(this.exceptionFilter.catch.bind(this.exceptionFilter));
   }
 
   async init() {
