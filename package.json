@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "main": "dist/index.js",
   "scripts": {
-    "start": "node dist/main.js",
     "dev": "nodemon",
+    "dev:inspect": "nodemon --exec node --inspect=0.0.0.0:9229 --require ts-node/register src/main.ts",
+    "start": "node dist/main.js",
+    "build": "tsc",
     "prestart": "rm -r dist & tsc",
     "prettier": "prettier . --write",
     "eslint": "eslint .",
