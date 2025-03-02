@@ -6,7 +6,7 @@ import { Container, ContainerModule } from 'inversify';
 import { LoggerServiceInterface } from './logger/types.js';
 import { TYPES } from './types.js';
 import { ExceptionFilterInterface } from './errors/types.js';
-import { UsersControllerInterface } from './users/types';
+import { UsersControllerInterface } from './users/types.js';
 
 const appBindings = new ContainerModule((bind) => {
   bind<LoggerServiceInterface>(TYPES.LoggerService).to(LoggerService);
