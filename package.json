@@ -11,7 +11,8 @@
     "prettier": "prettier . --write",
     "eslint": "eslint .",
     "eslint-fix": "eslint . --fix",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test-load": "clinic doctor --on-port 'autocannon -m POST localhost:8000' -- node dist/main.js  "
   },
   "keywords": [],
   "author": "",
