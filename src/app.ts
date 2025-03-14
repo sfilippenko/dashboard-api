@@ -5,6 +5,7 @@ import { ExceptionFilterInterface } from './errors/types';
 import { inject, injectable } from 'inversify';
 import { TYPES } from './types';
 import { UsersControllerInterface } from './users/types';
+import { json } from 'body-parser';
 
 @injectable()
 export class App {
@@ -24,6 +25,10 @@ export class App {
     this.exceptionFilter = exceptionFilter;
   }
 
+  useMiddlewares() {
+    this.app.use(json());
+  }
+
   useRoutes() {
     this.app.use('/users', this.usersController.router);
   }
@@ -33,6 +38,7 @@ export class App {
   }
 
   async init() {
+    this.useMiddlewares();
     this.useRoutes();
     this.useExceptionFilters();
     this.server = this.app.listen(this.port, () => {

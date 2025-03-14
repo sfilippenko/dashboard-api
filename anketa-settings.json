@@ -1,0 +1,144 @@
+{
+  "steps": [
+    {
+      "stepTitle": "string, опционально. Актуально, если несколько шагов",
+      "blocks": [
+        {
+          "blockTitle": "string",
+          "gridColumnsCount": "number, число колонок",
+          "fields": [
+            {
+              "fieldType": "number",
+              "fieldSettings": {
+                "label": "string, заголовок над полем",
+                "extraText": "string, надпись под полем",
+                "placeholder": "string",
+                "required": "boolean",
+                "value": "string",
+                "min": "number",
+                "max": "number",
+                "allowDecimal": "number, можно ли числа с плавающей точкой"
+              }
+            },
+            {
+              "fieldType": "text",
+              "fieldSettings": {
+                "label": "string, заголовок над полем",
+                "extraText": "string, надпись под полем",
+                "placeholder": "string",
+                "required": "boolean",
+                "value": "string"
+              }
+            },
+            {
+              "fieldType": "textarea",
+              "fieldSettings": {
+                "label": "string, заголовок над полем",
+                "extraText": "string, надпись под полем",
+                "placeholder": "string",
+                "required": "boolean",
+                "rows": "number, сколько строк влезает в textArea",
+                "value": "string"
+              }
+            },
+            {
+              "fieldType": "slider",
+              "fieldSettings": {
+                "label": "string, заголовок над полем",
+                "extraText": "string, надпись под полем",
+                "placeholder": "string",
+                "required": "boolean",
+                "value": "string",
+                "min": "number",
+                "max": "number",
+                "minLabel": "string",
+                "maxLabel": "string",
+                "allowDecimal": "number, можно ли числа с плавающей точкой"
+              }
+            },
+            {
+              "fieldType": "radio",
+              "fieldSettings": {
+                "label": "string, справа от радио кнопки",
+                "extraText": "string, надпись под полем",
+                "required": "boolean",
+                "value": "boolean"
+              }
+            },
+            {
+              "fieldType": "radioList",
+              "fieldSettings": {
+                "label": "string, заголовок над полем",
+                "extraText": "string, надпись под полем",
+                "required": "boolean",
+                "value": "string",
+                "options": [
+                  {
+                    "value": "string",
+                    "label": "string"
+                  }
+                ]
+              }
+            },
+            {
+              "fieldType": "select",
+              "fieldSettings": {
+                "label": "string, заголовок над полем",
+                "extraText": "string, надпись под полем",
+                "placeholder": "string",
+                "required": "boolean",
+                "value": "string",
+                "options": [
+                  {
+                    "value": "string",
+                    "label": "string"
+                  }
+                ]
+              }
+            },
+            {
+              "fieldType": "checkbox",
+              "fieldSettings": {
+                "label": "string, справа от чекбокса",
+                "extraText": "string, надпись под полем",
+                "required": "boolean",
+                "value": "boolean"
+              }
+            },
+            {
+              "fieldType": "checkboxList",
+              "fieldSettings": {
+                "label": "string, заголовок над полем",
+                "extraText": "string, надпись под полем",
+                "required": "boolean",
+                "value": ["string"],
+                "options": [
+                  {
+                    "value": "string",
+                    "label": "string"
+                  }
+                ]
+              }
+            },
+            {
+              "fieldType": "selectMulti",
+              "fieldSettings": {
+                "label": "string, заголовок над полем",
+                "extraText": "string, надпись под полем",
+                "placeholder": "string",
+                "required": "boolean",
+                "value": ["string"],
+                "options": [
+                  {
+                    "value": "string",
+                    "label": "string"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
