@@ -4,6 +4,7 @@ import { ExceptionFilterInterface } from './types';
 import { HttpError } from './http-error';
 import { inject, injectable } from 'inversify';
 import { TYPES } from '../types';
+import { ValidateError } from './validate-error';
 
 @injectable()
 export class ExceptionFilter implements ExceptionFilterInterface {
@@ -11,13 +12,14 @@ export class ExceptionFilter implements ExceptionFilterInterface {
 
   catch(error: Error | HttpError, req: Request, res: Response, next: NextFunction) {
     if (error instanceof HttpError) {
-      console.log(1);
       this.logger.error(`[${error.context}] Error ${error.statusCode}: ${error.message}`);
-      res.status(error.statusCode).send({ error: error.message });
+      res.status(error.statusCode).send({ errorMessage: error.message });
+    } else if (error instanceof ValidateError) {
+      this.logger.error(`[${error.context}] ${error.message}`);
+      res.status(422).send({ errorMessage: error.message, errors: error.errors });
     } else {
-      console.log(2);
       this.logger.error(error);
-      res.status(500).send({ error: error.message });
+      res.status(500).send({ errorMessage: error.message });
     }
   }
 }
