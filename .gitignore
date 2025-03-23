@@ -2,3 +2,6 @@
 /.idea
 /.clinic
 /dist
+.env.development
+.env.production
+.env.load

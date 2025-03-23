@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "dist/index.js",
   "scripts": {
-    "dev": "nodemon",
+    "dev": "ENV_CONFIG_PATH=./.env.development nodemon",
     "dev:inspect": "nodemon --exec node --inspect=0.0.0.0:9229 --require ts-node/register src/main.ts",
     "start": "node dist/main.js",
     "build": "tsc",
@@ -25,6 +25,7 @@
     ]
   },
   "dependencies": {
+    "@dotenvx/dotenvx": "^1.39.0",
     "bcryptjs": "^3.0.2",
     "body-parser": "^1.20.3",
     "class-transformer": "^0.5.1",
