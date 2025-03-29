@@ -42,6 +42,6 @@ export class UsersController extends BaseController implements UsersControllerIn
     if (!user) {
       return next(new HttpError(422, 'User exist', 'register'));
     }
-    this.ok(res, { email: user.email });
+    this.ok(res, { email: user.email, id: user.id });
   }
 }
