@@ -16,13 +16,20 @@ export class UsersService implements UsersServiceInterface {
     const salt = this.configService.get('salt');
     const user = new User(dto.email, dto.name);
     await user.setPassword(dto.password, Number(salt));
+
     if (await this.usersRepository.find(user.email)) {
       return null;
     }
+
     return this.usersRepository.create(user);
   }
 
   async validateUser(dto: UserLoginDto) {
-    return true;
+    const existedUser = await this.usersRepository.find(dto.email);
+    if (!existedUser) {
+      return false;
+    }
+    const user = new User(existedUser.email, existedUser.name, existedUser.password);
+    return user.comparePasswords(dto.password);
   }
 }

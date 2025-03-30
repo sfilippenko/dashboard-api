@@ -7,7 +7,6 @@ import { TYPES } from '../types';
 import { UsersControllerInterface, UsersServiceInterface } from './types';
 import { UserLoginDto } from './dto/user-login.dto';
 import { UserRegisterDto } from './dto/user-register.dto';
-import { User } from './user-entity';
 import { ValidateMiddleware } from '../common/validate-middleware';
 
 @injectable()
@@ -22,6 +21,7 @@ export class UsersController extends BaseController implements UsersControllerIn
         method: 'post',
         path: '/login',
         func: this.login,
+        middlewares: [new ValidateMiddleware(UserLoginDto, 'register')],
       },
       {
         method: 'post',
@@ -32,9 +32,12 @@ export class UsersController extends BaseController implements UsersControllerIn
     ]);
   }
 
-  login(req: Request<unknown, unknown, UserLoginDto>, res: Response, next: NextFunction) {
-    console.log('login body', req.body);
-    next(new HttpError(401, 'Auth error', 'login'));
+  async login(req: Request<unknown, unknown, UserLoginDto>, res: Response, next: NextFunction) {
+    const isValid = await this.usersService.validateUser(req.body);
+    if (!isValid) {
+      return next(new HttpError(401, 'Auth error', 'login'));
+    }
+    this.ok(res, { message: 'success' });
   }
 
   async register(req: Request<unknown, unknown, UserRegisterDto>, res: Response, next: NextFunction) {
