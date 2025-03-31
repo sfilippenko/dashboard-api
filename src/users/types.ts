@@ -13,6 +13,7 @@ export interface UsersControllerInterface {
 export interface UsersServiceInterface {
   createUser: (dto: UserRegisterDto) => Promise<UserModel | null>;
   validateUser: (dto: UserLoginDto) => Promise<boolean>;
+  getUser: (email: string) => Promise<UserModel | null>;
 }
 
 export interface UsersRepositoryInterface {

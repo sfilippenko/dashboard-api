@@ -10,6 +10,7 @@ import { UserRegisterDto } from './dto/user-register.dto';
 import { ValidateMiddleware } from '../common/validate-middleware';
 import { sign } from 'jsonwebtoken';
 import { ConfigServiceInterface } from '../config/types';
+import { GuardMiddleware } from '../common/guard-middleware';
 
 @injectable()
 export class UsersController extends BaseController implements UsersControllerInterface {
@@ -32,6 +33,12 @@ export class UsersController extends BaseController implements UsersControllerIn
         func: this.register,
         middlewares: [new ValidateMiddleware(UserRegisterDto, 'register')],
       },
+      {
+        method: 'post',
+        path: '/info',
+        func: this.info,
+        middlewares: [new GuardMiddleware()],
+      },
     ]);
   }
 
@@ -50,6 +57,14 @@ export class UsersController extends BaseController implements UsersControllerIn
       return next(new HttpError(422, 'User exist', 'register'));
     }
     this.ok(res, { email: user.email, id: user.id });
+  }
+
+  async info(req: Request, res: Response, next: NextFunction) {
+    const user = await this.usersService.getUser(req.user!);
+    if (!user) {
+      return next(new HttpError(404, 'User not found', 'info'));
+    }
+    this.ok(res, { id: user.id });
   }
 
   async signJWT(email: string, secret: string): Promise<string> {

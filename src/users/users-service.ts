@@ -32,4 +32,8 @@ export class UsersService implements UsersServiceInterface {
     const user = new User(existedUser.email, existedUser.name, existedUser.password);
     return user.comparePasswords(dto.password);
   }
+
+  async getUser(email: string) {
+    return this.usersRepository.find(email);
+  }
 }
